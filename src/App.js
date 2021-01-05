@@ -1,13 +1,14 @@
-import React from 'react';
 
-export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+import React, { PureComponent } from 'react';
+import Home from '@/view/home/Home';
+import Profile from '@/view/home/Profile';
+export default class App extends PureComponent {
   render() {
-    return ( 
-      <div>111233</div>
+    return (
+      <div>
+        <Home />
+        <Profile />
+      </div>
     )
   }
 }
