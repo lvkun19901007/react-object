@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react'
 // import connect from '@/utils/connect';
 import { connect } from 'react-redux';
-import { addAction } from '@/store/actionCreators';
+import { addAction, getHomeMultidataAction } from '@/store/actionCreators';
 class Home extends PureComponent {
+  componentDidMount() {
+    this.props.getHomeMultidata();
+  }
   render() {
     return (
       <div>
@@ -29,6 +32,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addNumber: function(number) {
       dispatch(addAction(number))
+    },
+    getHomeMultidata() {
+      dispatch(getHomeMultidataAction());
     }
   };
 };

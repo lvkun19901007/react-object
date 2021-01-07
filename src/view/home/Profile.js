@@ -12,6 +12,22 @@ class Profile extends PureComponent {
         <h2>当前计数: {this.props.counter}</h2>
         <button onClick={e => this.decrement()}>-1</button>
         <button onClick={e => this.subCounter()}>-5</button>
+        <h1>Banners</h1>
+        <ul>
+          {
+            this.props.banners.map((item, index) => {
+              return <li key={item.acm}>{item.title}</li>
+            })
+          }
+        </ul>
+        <h1>Recommends</h1>
+        <ul>
+          {
+            this.props.recommends.map((item, index) => {
+              return <li key={item.acm}>{item.title}</li>
+            })
+          }
+        </ul>
       </div>
     )
   }
@@ -24,7 +40,9 @@ class Profile extends PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    counter: state.counter
+    counter: state.counter,
+    banners: state.banners,
+    recommends: state.recommends
   };
 };
 const mapDispatchToProps = dispatch => {
