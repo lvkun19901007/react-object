@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 // import connect from '@/utils/connect';
 import { connect } from 'react-redux';
-import { subAction } from '@/store/actionCreators';
+import { subAction } from '@/store/counter/actionCreators';
 class Profile extends PureComponent {
   render() {
     return (
@@ -40,9 +40,9 @@ class Profile extends PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    counter: state.counter,
-    banners: state.banners,
-    recommends: state.recommends
+    counter: state.counterInfo.counter,
+    banners: state.homeInfo.banners,
+    recommends: state.homeInfo.recommends
   };
 };
 const mapDispatchToProps = dispatch => {

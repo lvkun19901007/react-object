@@ -1,26 +1,11 @@
-import { 
-  ADD_NUMBER, 
-  SUB_NUMBER,
-  CHANGE_BANNER,
-  CHANGE_RECOMMEND
-} from './constants';
-const initialState = {
-  counter: 0,
-  banners: [],
-  recommends: []
-};
-function reducer(state = initialState, action) {
-  switch(action.type) {
-    case ADD_NUMBER:
-      return {...state, counter: state.counter + action.num};
-    case SUB_NUMBER: 
-      return {...state, counter: state.counter - action.num};
-    case CHANGE_BANNER:
-      return {...state, banners: action.banners};
-    case CHANGE_RECOMMEND:
-      return {...state, recommends: action.recommends};
-    default:
-      return state;
+
+import { reducer as counterReducer } from './counter'
+import { reducer as homeReducer } from './home'
+
+function reducer(state = {}, action) {
+  return {
+    counterInfo: counterReducer(state.counterInfo, action),
+    homeInfo: homeReducer(state.homeInfo, action)
   }
 }
 export default reducer;

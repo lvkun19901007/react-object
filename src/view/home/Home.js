@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 // import connect from '@/utils/connect';
 import { connect } from 'react-redux';
-import { addAction, getHomeMultidataAction } from '@/store/actionCreators';
+import { addAction } from '@/store/counter/actionCreators';
+import { fecthHomeMulitidataAction } from '@/store/home/actionCreators';
 class Home extends PureComponent {
   componentDidMount() {
     this.props.getHomeMultidata();
@@ -25,7 +26,7 @@ class Home extends PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    counter: state.counter
+    counter: state.counterInfo.counter
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -34,7 +35,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(addAction(number))
     },
     getHomeMultidata() {
-      dispatch(getHomeMultidataAction());
+      dispatch(fecthHomeMulitidataAction);
     }
   };
 };

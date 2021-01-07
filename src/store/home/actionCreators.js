@@ -1,18 +1,9 @@
 import { 
-  ADD_NUMBER, 
-  SUB_NUMBER,
   CHANGE_BANNER,
-  CHANGE_RECOMMEND
+  CHANGE_RECOMMEND,
+  FETCH_HOME_MULTIDATA
 } from './constants';
-import axios from 'axios'
-const addAction = (count) => ({
-  type: ADD_NUMBER,
-  num: count
-});
-const subAction = (count) => ({
-  type: SUB_NUMBER,
-  num: count
-});
+import axios from 'axios';
 const changeBannersAction = (banners) => ({
   type: CHANGE_BANNER,
   banners
@@ -21,6 +12,8 @@ const changeRecommendsAction = (recommends) => ({
   type: CHANGE_RECOMMEND,
   recommends
 });
+
+// redux-thunk中定义的action
 const getHomeMultidataAction = () => {
   return (dispatch) => {
     axios.get('http://123.207.32.32:8000/home/multidata').then(res => {
@@ -30,4 +23,15 @@ const getHomeMultidataAction = () => {
     });
   }
 }
-export { addAction, subAction, getHomeMultidataAction };
+
+// redux-saga拦截的action
+const fecthHomeMulitidataAction = {
+  type: FETCH_HOME_MULTIDATA
+}
+
+export { 
+  changeBannersAction, 
+  changeRecommendsAction,
+  getHomeMultidataAction, 
+  fecthHomeMulitidataAction 
+};
